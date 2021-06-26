@@ -1,16 +1,17 @@
-import React from 'react'
-import './CenterCard.css'
+import React from "react";
+import "./CenterCard.css";
 
-function CenterCard({center}) {
-    return (
-        <div className="card">
-            <div className="center_name">
-                <h1>{center.name}</h1>
-                <p>State : {center.state_name}</p>
-                <p>District : {center.district_name}</p>
-            </div>
+const CenterCard = ({ center }) => {
+  // console.log(center_id);
+  return (
+    <div className="card__container">
+      <div className="card">
+        <div className="center_name">
+          <h4>{center.name}</h4>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default CenterCard
+export default CenterCard;
