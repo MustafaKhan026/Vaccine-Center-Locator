@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import CenterCard from './components/CenterCard'
-import Centers from './components/Centers'
-import  './App.css'
+import { BrowserRouter as Router, Switch, Route,useHistory } from "react-router-dom";
+import CenterCard from "./components/CenterCard";
+import CenterDetails from "./components/CenterDetails";
+import Centers from "./components/Centers";
+import "./App.css";
 
 const App = () => {
+  const history = useHistory()
   var today = new Date();
   var date =
     today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
@@ -38,42 +41,60 @@ const App = () => {
     getCenters();
   }, []);
   return (
+    <>
     <div className="App">
-    <div className="form__container">
-      <form onSubmit={formSubmit}>
-        <div className="form__label">
-          <label>Find vaccine center</label>
-        </div>
-        <div className="form__input">
-          <input type="text" placeholder="Enter pincode...." value={areaPincode} onChange={getPincode} />
-        </div>
-        <button type="submit">Click me</button>
-      </form>
-    </div>
-    <div className={vaccCenters && vaccCenters.length !== 0 ? "center__container" : "center__container_none"}>
-     <div className="center__header">
-     {vaccCenters && vaccCenters?.length !== 0 ? <p> Found {vaccCenters?.length} centers</p> : null}
-     </div>
-     <div className="center__wrapper">
-     {vaccCenters && vaccCenters.length === 0 ? (
-        <p>Oop's the server didn't sent the data for {areaPincode}</p>
-      ) : (
-        vaccCenters?.map((center) => {
-          return (
-            <div>
-              <CenterCard center={center} />
+      <Router>
+        <Switch>
+        <Route exact path="/">
+          
+            <div className="form__container">
+              <form onSubmit={formSubmit}>
+                <div className="form__label">
+                  <label>Find vaccine center</label>
+                </div>
+                <div className="form__input">
+                  <input
+                    type="text"
+                    placeholder="Enter pincode...."
+                    value={areaPincode}
+                    onChange={getPincode}
+                  />
+                </div>
+                <button type="submit">Click me</button>
+              </form>
             </div>
-          );
-        })
-      )}
-     </div>
-    </div>
-  </div>
+            <div
+              className={
+                vaccCenters && vaccCenters.length !== 0
+                  ? "center__container"
+                  : "center__container_none"
+              }
+            >
+              <div className="center__header">
+                {vaccCenters && vaccCenters?.length !== 0 ? (
+                  <p> Found {vaccCenters?.length} centers</p>
+                ) : null}
+              </div>
+              <div className="center__wrapper">
+                {vaccCenters && vaccCenters.length === 0 ? (
+                  <p>Oop's the server didn't sent the data for {areaPincode}</p>
+                ) : (
+                  vaccCenters?.map((center) => {
+                    return (
+                      <div>
+                        <CenterCard center={center} />
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            </div>
+        </Route>
+        </Switch>
+      </Router>
+      </div>
+    </>
   );
 };
 
 export default App;
-
-
-
-

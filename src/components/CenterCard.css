@@ -1,6 +1,6 @@
 .card{
     flex-direction: column;
-    height: 18.375rem;
+    height: 24rem;
     margin-bottom: 1.5rem;
     margin-right: 1.5rem;
     overflow: hidden;
@@ -8,6 +8,7 @@
     text-align: left;
     width: 300px;
     border: 1px solid #333;
+    border-radius: 10px;
 }
 
 .card_img{
@@ -21,8 +22,12 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
-
-
+.center_details{
+    text-align: center;
+}
+.center_name{
+    text-align: center;
+}
 
 
 
