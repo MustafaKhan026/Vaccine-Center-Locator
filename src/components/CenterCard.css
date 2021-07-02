@@ -1,8 +1,8 @@
 .card{
     flex-direction: column;
-    height: 24rem;
-    margin-bottom: 1.5rem;
-    margin-right: 1.5rem;
+    height: 23rem;
+    margin-bottom: 1rem;
+    margin-left: .5rem;
     overflow: hidden;
     position: relative;
     text-align: left;
@@ -22,8 +22,8 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
-.center_details{
-    text-align: center;
+.center_details p{
+    padding: 0 20px;
 }
 .center_name{
     text-align: center;
@@ -31,4 +31,8 @@
 
 
 
-
+@media screen and (max-width: 425px){
+    .card{
+      margin-right: 1.5rem;
+    }
+  }
